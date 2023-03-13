@@ -18,8 +18,8 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             RadialGradient(stops: [
-                .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
-                .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3),
+                .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.4),
+                .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.4),
             ], center: .top, startRadius: 200, endRadius: 400)
                 .ignoresSafeArea()
             
@@ -36,7 +36,7 @@ struct ContentView: View {
                             .foregroundStyle(.secondary)
                             .font(.subheadline.weight(.heavy))
                         Text(countries[correctAnswer])
-//                            .foregroundColor(.white)
+                            .foregroundStyle(.secondary)
                             .font(.largeTitle.weight(.semibold))
                     }
                     
@@ -77,7 +77,8 @@ struct ContentView: View {
             scoreTitle = "Correct"
             scoreValue += 1
         } else {
-            scoreTitle = "Wrong"
+            scoreTitle = "Wrong! That's the flag of: \(countries[number])"
+            scoreValue -= 1
         }
         
         showingScore = true
